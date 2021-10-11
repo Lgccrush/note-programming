@@ -2,6 +2,8 @@
 
 [Canal地址](https://github.com/alibaba/canal)
 
+
+
 下载canal.deployer 
 
 解压
