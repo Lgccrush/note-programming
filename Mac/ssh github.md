@@ -3,6 +3,7 @@
 ```sh
 ssh -v #查看是否安装ssh
 cat ~/.ssh/id_rsa.pub   #查看ssh
+$ ssh-keygen -t rsa -C "邮箱地址" #创建ssh
 ```
 
 
