@@ -1,0 +1,172 @@
+{
+  "_id": "canal-tmls-updatelaststateinfo",
+  "found": true,
+  "script": {
+    "lang": "painless",
+    "source": """
+             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+              ctx._source.stock_stat_id = params.stock_stat_id;
+              ctx._source.effective_scan_datetime = params.effective_scan_datetime;
+              ctx._source.problem_type = params.problem_type;
+              ctx._source.problem_name = params.problem_name;
+              ctx._source.problem_remark = params.problem_remark;
+              ctx._source.problem_datetime = params.problem_datetime;
+              ctx._source.last_sd_account_no = params.last_sd_account_no;
+              ctx._source.last_pay_account_no = params.last_pay_account_no;
+              ctx._source.warehouse_zoning_rules_id = params.warehouse_zoning_rules_id;
+              ctx._source.count_detent = params.count_detent;
+              ctx._source.count_detent_datetime = params.count_detent_datetime;
+              ctx._source.last_unlock_datetime = params.last_unlock_datetime;
+              ctx._source.last_unlock_user_name = params.last_unlock_user_name;
+              ctx._source.is_check_lock = params.is_check_lock;
+              ctx._source.bagging_finish_datetime = params.bagging_finish_datetime;
+              ctx._source.handover_no = params.handover_no;
+              ctx._source.handover_datetime = params.handover_datetime;
+              ctx._source.is_customs_clearance = params.is_customs_clearance;
+              ctx._source.pick_datetime = params.pick_datetime;
+              ctx._source.flight_date = params.flight_date;
+              ctx._source.lastmile_received_datetime = params.lastmile_received_datetime;
+              ctx._source.lastmile_transit_datetime = params.lastmile_transit_datetime;
+              ctx._source.first_delivery_datetime = params.first_delivery_datetime;
+              ctx._source.out_delivery_datetime = params.out_delivery_datetime;
+              ctx._source.lastmile_in_self_pickup_datetime = params.lastmile_in_self_pickup_datetime;
+              ctx._source.shipment_pending_datetime = params.shipment_pending_datetime;
+              ctx._source.lastmile_rejected_datetime = params.lastmile_rejected_datetime;
+              ctx._source.lost_datetime = params.lost_datetime;
+              ctx._source.damage_datetime = params.damage_datetime;
+              ctx._source.return_outbound_datetime = params.return_outbound_datetime;
+              ctx._source.arrive_datetime = params.arrive_datetime;
+              ctx._source.th_datetime = params.th_datetime;
+              ctx._source.scrapped_datetime = params.scrapped_datetime;
+              ctx._source.delivery_datetime = params.delivery_datetime;
+              ctx._source.sign_datetime = params.sign_datetime;
+              ctx._source.pick_up = params.pick_up;
+              ctx._source.isok = params.isok;
+              ctx._source.order_create_datetime = params.order_create_datetime;
+              ctx._source.shipment_pending_remark = params.shipment_pending_remark;
+              ctx._source.lastmile_rejected_remark = params.lastmile_rejected_remark;
+              ctx._source.lastmile_return_datetime = params.lastmile_return_datetime;
+              ctx._source.lastmile_return_datetime = params.lastmile_return_datetime;
+              ctx._source.lastmile_return_putaway_datetime = params.lastmile_return_putaway_datetime;
+              
+              ctx._source.import_custom_received_datetime = params.import_custom_received_datetime;
+              ctx._source.import_customs_clearance_start_datetime = params.import_customs_clearance_start_datetime;
+              ctx._source.import_customs_clearance_not_release_datetime = params.import_customs_clearance_not_release_datetime;
+              ctx._source.import_customs_clearance_released_datetime = params.import_customs_clearance_released_datetime;
+              ctx._source.import_customs_repacking_datetime = params.import_customs_repacking_datetime;
+              ctx._source.import_customs_prepare_for_handover_datetime = params.import_customs_prepare_for_handover_datetime;
+              ctx._source.import_customs_handover_to_truck_datetime = params.import_customs_handover_to_truck_datetime;
+              ctx._source.return_collected_datetime = params.return_collected_datetime;
+              ctx._source.return_warehouse_inbound_datetime = params.return_warehouse_inbound_datetime;
+              ctx._source.return_warehouse_outbound_datetime = params.return_warehouse_outbound_datetime;
+              ctx._source.return_handover_success_datetime = params.return_handover_success_datetime;
+              ctx._source.import_customs_clearance_on_hold_datetime = params.import_customs_clearance_on_hold_datetime;
+              ctx._source.sd_houseno = params.sd_houseno;
+              ctx._source.lastmile_arrive_destination_hub_datetime = params.lastmile_arrive_destination_hub_datetime;
+              ctx._source.lastmile_depart_sorting_center_datetime = params.lastmile_depart_sorting_center_datetime;
+              
+              
+              ctx._source.tmls_last_scan_status_code = params.tmls_last_scan_status_code;
+              ctx._source.tmls_last_scan_status_name = params.tmls_last_scan_status_name;
+              ctx._source.tmls_last_scan_stat_id = params.tmls_last_scan_stat_id;
+              ctx._source.tmls_last_scan_station = params.tmls_last_scan_station;
+              ctx._source.tmls_last_scan_datetime = params.tmls_last_scan_datetime;
+              ctx._source.tmls_last_scan_remark = params.tmls_last_scan_remark;
+              ctx._source.tmls_handover_Lastmile_datetime = params.tmls_handover_Lastmile_datetime;
+              
+              ctx._source.tmls_declared_datetime = params.tmls_declared_datetime;
+              ctx._source.tmls_flight_take_off_datetime = params.tmls_flight_take_off_datetime;
+              ctx._source.tmls_flight_arrival_datetime = params.tmls_flight_arrival_datetime;
+              ctx._source.tmls_cleared_datetime = params.tmls_cleared_datetime;
+              
+              
+              if(ctx._source.tmls_declared_datetime instanceof String){
+                    ctx._source.tmls_declared_datetime = sdf.parse(ctx._source.tmls_declared_datetime.replace("T", " ")).getTime();
+              }
+              if(ctx._source.tmls_flight_take_off_datetime instanceof String){
+                    ctx._source.tmls_flight_take_off_datetime = sdf.parse(ctx._source.tmls_flight_take_off_datetime.replace("T", " ")).getTime();
+              }
+              if(ctx._source.tmls_flight_arrival_datetime instanceof String){
+                    ctx._source.tmls_flight_arrival_datetime = sdf.parse(ctx._source.tmls_flight_arrival_datetime.replace("T", " ")).getTime();
+              }
+              if(ctx._source.tmls_cleared_datetime instanceof String){
+                    ctx._source.tmls_cleared_datetime = sdf.parse(ctx._source.tmls_cleared_datetime.replace("T", " ")).getTime();
+              }
+              
+              if(ctx._source.tmls_last_scan_datetime instanceof String){
+                    ctx._source.tmls_last_scan_datetime = sdf.parse(ctx._source.tmls_last_scan_datetime.replace("T", " ")).getTime();
+              }
+              if(ctx._source.tols_last_scan_datetime instanceof String){
+                    ctx._source.tols_last_scan_datetime = sdf.parse(ctx._source.tols_last_scan_datetime.replace("T", " ")).getTime();
+              }
+               if(ctx._source.tmls_handover_Lastmile_datetime instanceof String){
+                    ctx._source.tmls_handover_Lastmile_datetime = sdf.parse(ctx._source.tmls_handover_Lastmile_datetime.replace("T", " ")).getTime();
+              }
+              if(ctx._source.tols_handover_Lastmile_datetime instanceof String){
+                    ctx._source.tols_handover_Lastmile_datetime = sdf.parse(ctx._source.tols_handover_Lastmile_datetime.replace("T", " ")).getTime();
+              }
+              if (ctx._source.tmls_last_scan_status_code == 'OK' || null == ctx._source.tols_last_scan_datetime) {
+                  ctx._source.last_scan_status_code = ctx._source.tmls_last_scan_status_code;
+                  ctx._source.last_scan_status_name = ctx._source.tmls_last_scan_status_name;
+                  ctx._source.last_scan_stat_id = ctx._source.tmls_last_scan_stat_id;
+                  ctx._source.last_scan_station = ctx._source.tmls_last_scan_station;
+                  ctx._source.last_scan_datetime = ctx._source.tmls_last_scan_datetime;
+                  ctx._source.last_scan_remark = ctx._source.tmls_last_scan_remark;
+              } else if ((null == ctx._source.tmls_last_scan_datetime && null != ctx._source.tols_last_scan_datetime) || ctx._source.tmls_last_scan_datetime < ctx._source.tols_last_scan_datetime) {
+                  ctx._source.last_scan_status_code = ctx._source.tols_last_scan_status_code;
+                  ctx._source.last_scan_status_name = ctx._source.tols_last_scan_status_name;
+                  ctx._source.last_scan_stat_id = ctx._source.tols_last_scan_stat_id;
+                  ctx._source.last_scan_station = ctx._source.tols_last_scan_station;
+                  ctx._source.last_scan_datetime = ctx._source.tols_last_scan_datetime;
+                  ctx._source.last_scan_remark = ctx._source.tols_last_scan_remark;
+              } else if ((null == ctx._source.tols_last_scan_datetime && null != ctx._source.tmls_last_scan_datetime) || ctx._source.tols_last_scan_datetime < ctx._source.tmls_last_scan_datetime) {
+                  ctx._source.last_scan_status_code = ctx._source.tmls_last_scan_status_code;
+                  ctx._source.last_scan_status_name = ctx._source.tmls_last_scan_status_name;
+                  ctx._source.last_scan_stat_id = ctx._source.tmls_last_scan_stat_id;
+                  ctx._source.last_scan_station = ctx._source.tmls_last_scan_station;
+                  ctx._source.last_scan_datetime = ctx._source.tmls_last_scan_datetime;
+                  ctx._source.last_scan_remark = ctx._source.tmls_last_scan_remark;
+              } else {
+                  ctx._source.last_scan_status_code = null;
+                  ctx._source.last_scan_status_name = null;
+                  ctx._source.last_scan_stat_id = null;
+                  ctx._source.last_scan_station = null;
+                  ctx._source.last_scan_datetime = null;
+                  ctx._source.last_scan_remark = null;
+              }
+              if (null != ctx._source.tmls_handover_Lastmile_datetime && null != ctx._source.tols_handover_Lastmile_datetime) {
+                  ctx._source.handover_Lastmile_datetime = ctx._source.tmls_handover_Lastmile_datetime > ctx._source.tols_handover_Lastmile_datetime ? ctx._source.tmls_handover_Lastmile_datetime: ctx._source.tols_handover_Lastmile_datetime;
+              } else if (null != ctx._source.tmls_handover_Lastmile_datetime && null == ctx._source.tols_handover_Lastmile_datetime) {
+                  ctx._source.handover_Lastmile_datetime = ctx._source.tmls_handover_Lastmile_datetime;
+              } else if (null != ctx._source.tols_handover_Lastmile_datetime && null == ctx._source.tmls_handover_Lastmile_datetime) {
+                  ctx._source.handover_Lastmile_datetime = ctx._source.tols_handover_Lastmile_datetime;
+              } else {
+                  ctx._source.handover_Lastmile_datetime = null;
+              }
+              
+              if(null == ctx._source.tmls_declared_datetime){
+                ctx._source.declared_datetime = ctx._source.tols_declared_datetime;
+              }else{
+                ctx._source.declared_datetime = ctx._source.tmls_declared_datetime;
+              }
+              
+              if(null == ctx._source.tmls_flight_take_off_datetime){
+                ctx._source.flight_take_off_datetime = ctx._source.tols_flight_take_off_datetime;
+              }else{
+                ctx._source.flight_take_off_datetime = ctx._source.tmls_flight_take_off_datetime;
+              }
+              
+              if(null == ctx._source.tmls_flight_arrival_datetime){
+                ctx._source.flight_arrival_datetime = ctx._source.tols_flight_arrival_datetime;
+              }else{
+                ctx._source.flight_arrival_datetime = ctx._source.tmls_flight_arrival_datetime;
+              }
+              
+              if(null == ctx._source.tmls_cleared_datetime){
+                ctx._source.cleared_datetime = ctx._source.tols_cleared_datetime;
+              }else{
+                ctx._source.cleared_datetime = ctx._source.tmls_cleared_datetime;
+              }
+"""
+  }
+}
