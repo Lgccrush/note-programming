@@ -1,4 +1,4 @@
-### TMS  kafka/dubbo/ES
+### TMS  kafka-dubbo-ES
 
 #### kafka predictor
 
