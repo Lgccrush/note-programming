@@ -61,6 +61,7 @@ spring.kafka.listener.missing-topics-fatal=false
 # spring.kafka.listener.type=batch
 # 批量消费每次最多消费多少条消息
 # spring.kafka.consumer.max-poll-records=50
+spring.kafka.listener.concurrency=5
 
 ```
 
