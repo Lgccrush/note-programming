@@ -9,3 +9,10 @@ lsof -i:端口 #查找端口号
 nohup java -jar xxx.jar & #后台运行
 ```
 
+#### 压缩
+
+```sh
+tar -zcvf 
+```
+
+![image-20211211152731781](https://raw.githubusercontent.com/Lgccrush/uppic/master/uPic/2021/12/11/15:27:31_image-20211211152731781.png)
