@@ -21,3 +21,13 @@ ssh -T git@github.com
 ```
 
 ![image-20211011155743544](https://raw.githubusercontent.com/Lgccrush/uppic/master/uPic/2021/10/11/15:57:43_image-20211011155743544.png)
+
+4 pull失败执行
+
+```ssh
+ssh-keygen -p
+```
+
+
+
+![image-20220214161803786](https://raw.githubusercontent.com/Lgccrush/uppic/master/uPic/2022/02/14/16:18:03_image-20220214161803786.png)
