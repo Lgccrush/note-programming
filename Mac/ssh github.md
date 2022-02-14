@@ -24,7 +24,7 @@ ssh -T git@github.com
 
 4 pull失败执行
 
-```ssh
+```sh
 ssh-keygen -p
 ```
 
