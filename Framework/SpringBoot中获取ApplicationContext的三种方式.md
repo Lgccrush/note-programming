@@ -9,17 +9,18 @@ ApplicationContext是什么？
 Application Context获取的几种方式
 
 1 直接使用Autowired注入
+
+```java
 @Component
 public class Book1 {
-
     @Autowired
     private ApplicationContext applicationContext;
-    
+
     public void show (){
         System.out.println(applicationContext.getClass());
     }
 }
-
+```
 
 2 利用 spring4.3 的新特性
 使用spring4.3新特性但是存在一定的局限性，必须满足以下两点：
@@ -27,43 +28,41 @@ public class Book1 {
 1 构造函数只能有一个，如果有多个，就必须有一个无参数的构造函数，此时，spring会调用无参的构造函数
 
 2 构造函数的参数，必须在spring容器中存在
-1
-2
-3
+
+```java
 @Component
 public class Book2 {
-
     private ApplicationContext applicationContext;
-    
+
     public Book2(ApplicationContext applicationContext){
         System.out.println(applicationContext.getClass());
         this.applicationContext=applicationContext;
     }
-    
+
     public void show (){
         System.out.println(applicationContext.getClass());
     }
-
 }
+```
 
 3 实现spring提供的接口 ApplicationContextAware
 spring 在bean 初始化后会判断是不是ApplicationContextAware的子类，调用setApplicationContext（）方法， 会将容器中ApplicationContext传入进去
 
+```
 @Component
 public class Book3 implements ApplicationContextAware {
+  private ApplicationContext applicationContext;
 
-    private ApplicationContext applicationContext;
-    
     public void show (){
         System.out.println(applicationContext.getClass());
     }
-    
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
-}
-
+  }
+```
 
 结果获取三次：
 
