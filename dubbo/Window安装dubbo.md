@@ -1,4 +1,4 @@
-### Window安装dubbo
+Window安装dubbo
 
 [下载地址](https://github.com/alibaba/dubbo/tree/2.5.x)
 
